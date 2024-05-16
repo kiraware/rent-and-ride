@@ -12,36 +12,47 @@ export default async function Nav() {
   }
 
   return (
-    <nav>
-      <ul className="flex flex-row justify-evenly text-2xl font-bold">
+    <nav className="px-32">
+      <ul className="flex flex-row justify-evenly text-2xl font-semibold">
+        <li>
+          <Link href="/" className="hover:text-blue-600">
+            Beranda
+          </Link>
+        </li>
         {isAdmin ? (
           <>
             <li>
-              <Link href="/">Beranda</Link>
+              <Link href="/statistik" className="hover:text-blue-600">
+                Statistik
+              </Link>
             </li>
             <li>
-              <Link href="/statistik">Statistik</Link>
+              <Link href="/pesanan" className="hover:text-blue-600">
+                Pesanan
+              </Link>
             </li>
             <li>
-              <Link href="/pesanan">Pesanan</Link>
-            </li>
-            <li>
-              <Link href="/pengguna">Pengguna</Link>
+              <Link href="/pengguna" className="hover:text-blue-600">
+                Pengguna
+              </Link>
             </li>
           </>
         ) : (
           <>
             <li>
-              <Link href="/">Beranda</Link>
+              <Link href="/pesan" className="hover:text-blue-600">
+                Pesan
+              </Link>
             </li>
             <li>
-              <Link href="/pesan">Pesan</Link>
+              <Link href="/status" className="hover:text-blue-600">
+                Status
+              </Link>
             </li>
             <li>
-              <Link href="/status">Status</Link>
-            </li>
-            <li>
-              <Link href="/riwayat">Riwayat</Link>
+              <Link href="/riwayat" className="hover:text-blue-600">
+                Riwayat
+              </Link>
             </li>
           </>
         )}
