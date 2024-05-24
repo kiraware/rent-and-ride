@@ -1,47 +1,29 @@
-export default function Riwayat() {
+import CarHistoryFigure from '@/components/CarHistoryFigure'
+import { getDoneOrdersByUserId } from '@/lib/orders'
+import * as jose from 'jose'
+import { cookies } from 'next/headers'
+
+export default async function Riwayat() {
+  const jwt = cookies().get('Authorization')
+  let userId = ''
+
+  if (jwt !== undefined) {
+    const claims = jose.decodeJwt(jwt.value)
+
+    if (claims.sub !== undefined) userId = claims.sub
+  }
+
+  const doneOrders = await getDoneOrdersByUserId(userId)
+
   return (
     <main>
-{/* 
-      <h1>
-        Riwayat Sewa Kendaraan
-      </h1>
+      <h1>Riwayat Sewa Kendaraan</h1>
 
-        <div class="wrapper"> 
-          <div class="card">
-            <img src="https://placehold.co/400x400">
-              <div class="info">
-                <h1>"Nama kendaraan(bold)"</h1>
-                <h1>"Harga"</h1>
-                <h1>"Jenis Mobil"</h1>
-            </div>
-          </div>
-        </div>
-
-        <div class="wrapper">
-          <div class="card">
-            <img src="https://placehold.co/400x400">
-              <div class="info">
-                <h1>"Nama kendaraan(bold)"</h1>
-                <h1>"Warna dan jenis"</h1>
-                <h1>"Tanggal Pemakaian"</h1>
-                <h1>"harga"</h1>
-            </div>
-          </div>
-        </div>
-
-        <div class="wrapper">
-          <div class="card">
-            <img src="https://placehold.co/400x400">
-              <div class="info">
-                <h1>"Nama kendaraan(bold)"</h1>
-                <h1>"Warna dan jenis"</h1>
-                <h1>"Tanggal Pemakaian"</h1>
-                <h1>"harga"</h1>
-            </div>
-          </div>
-        </div> */}
-
+      <section className="flex flex-row flex-wrap justify-evenly">
+        {doneOrders.map((doneOrder) => (
+          <CarHistoryFigure key={doneOrder.id} order={doneOrder} />
+        ))}
+      </section>
     </main>
-
-  ]
-)
+  )
+}
