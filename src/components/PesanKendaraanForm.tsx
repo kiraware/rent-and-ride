@@ -17,18 +17,18 @@ export default function PesanKendaraanForm({ vehicleId, vehiclePrice, userId }: 
   const [endDate, setEndDate] = useState('');
   const [price, setPrice] = useState(0);
 
-  const handleStartDateChange = (event) => {
+  const handleStartDateChange = (event: any) => {
     setStartDate(event.target.value);
     calculatePrice(event.target.value, endDate);
   };
 
-  const handleEndDateChange = (event) => {
+  const handleEndDateChange = (event: any) => {
     setEndDate(event.target.value);
     calculatePrice(startDate, event.target.value);
   };
 
-  const calculatePrice = (start, end) => {
-    const diffTime = Math.abs(new Date(end) - new Date(start));
+  const calculatePrice = (start: string, end: string) => {
+    const diffTime = Math.abs(new Date(end).valueOf() - new Date(start).valueOf());
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     const totalPrice = vehiclePrice * (diffDays + 1);
     setPrice(totalPrice);
@@ -73,7 +73,6 @@ export default function PesanKendaraanForm({ vehicleId, vehiclePrice, userId }: 
             name="startDate"
             placeholder="Tanggal Awal Sewa"
             required
-            autoFocus
             value={startDate}
             onChange={handleStartDateChange}
           />
