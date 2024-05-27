@@ -23,7 +23,7 @@ export async function POST(request: Request) {
   const { email, password } = validatedFields.data
 
   // Lookup the user
-  const user = await prisma.user.findFirst({
+  const user = await prisma.user.findUnique({
     where: {
       email,
     },
