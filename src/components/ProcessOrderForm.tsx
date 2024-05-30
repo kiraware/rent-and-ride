@@ -1,14 +1,16 @@
 'use client'
 
-import cancelOrder from '@/actions/cancel_order'
+import processOrder from '@/actions/process_order'
+import { OrderStatus } from '@prisma/client'
 import { useFormState } from 'react-dom'
 
 type Props = {
   orderId: string
+  status: string
 }
 
-export default function CancelOrderForm({ orderId }: Props) {
-  const [error, formAction] = useFormState(cancelOrder, undefined)
+export default function ProcessOrderForm({ orderId, status }: Props) {
+  const [error, formAction] = useFormState(processOrder, undefined)
 
   return (
     <>
@@ -22,12 +24,21 @@ export default function CancelOrderForm({ orderId }: Props) {
           hidden
           required
         />
+        <input
+          id="action"
+          type="text"
+          name="action"
+          value={status === OrderStatus.PAID ? 'ambil' : 'kembalikan'}
+          readOnly
+          hidden
+          required
+        />
 
         <button
           type="submit"
           className="w-fit rounded-full bg-blue-600 px-4 py-2 text-white"
         >
-          Batalkan
+          {status === OrderStatus.PAID ? 'Ambil' : 'Kembalikan'}
         </button>
       </form>
 

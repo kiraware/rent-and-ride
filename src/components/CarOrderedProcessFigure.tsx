@@ -2,12 +2,14 @@ import { getVehicleById } from '@/lib/vehicles'
 import type { Order } from '@prisma/client'
 import Image from 'next/image'
 
+import ProcessOrderForm from './ProcessOrderForm'
+
 type Props = {
   order: Order
 }
 
-export default async function CarHistoryFigure({ order }: Props) {
-  const { rentedVehicleId, startDate, endDate, totalRentPrice } = order
+export default async function CarOrderedProcessFigure({ order }: Props) {
+  const { id, rentedVehicleId, status } = order
 
   const vehicle = await getVehicleById(rentedVehicleId)
 
@@ -34,10 +36,9 @@ export default async function CarHistoryFigure({ order }: Props) {
         <span>{type}</span>
       </p>
 
-      <p>
-        {startDate.toLocaleDateString()}-{endDate.toLocaleDateString()}
-      </p>
-      <p className="text-center">Rp. {totalRentPrice}</p>
+      <p>{status}</p>
+
+      <ProcessOrderForm orderId={id} status={status} />
     </section>
   )
 }

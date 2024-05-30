@@ -26,6 +26,22 @@ export async function getPendingOrPaidOrdersByUserId(
   })
 }
 
+export async function getPaidOrReceivedOrdersByUserId(
+  userId: string,
+): Promise<Order[]> {
+  return await prisma.order.findMany({
+    where: {
+      renterId: userId,
+      AND: {
+        OR: [
+          { status: OrderStatus.PAID },
+          { status: OrderStatus.RENTER_RECEIVED },
+        ],
+      },
+    },
+  })
+}
+
 export async function getDoneOrdersByUserId(userId: string): Promise<Order[]> {
   return await prisma.order.findMany({
     where: {
