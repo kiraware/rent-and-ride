@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       rentedVehicleId: vehicleId,
       startDate: new Date(startDate),
       endDate: new Date(endDate),
-      totalRentPrice: Number(price)
+      totalRentPrice: Number(price),
     },
   })
 

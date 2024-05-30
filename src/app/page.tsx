@@ -1,5 +1,4 @@
 import CarOrderFigure from '@/components/CarOrderFigure'
-import Nav from '@/components/Nav'
 import { getVehicles } from '@/lib/vehicles'
 import * as jose from 'jose'
 import { cookies } from 'next/headers'
@@ -17,10 +16,6 @@ export default async function Home() {
 
   return (
     <>
-      <header className="py-8">
-        <Nav />
-      </header>
-
       {isAdmin ? (
         <></>
       ) : (

@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import pesan from '@/actions/pesan'
+import { useState } from 'react'
 import { useFormState } from 'react-dom'
 
 type Props = {
@@ -10,41 +10,44 @@ type Props = {
   userId: string
 }
 
-export default function PesanKendaraanForm({ vehicleId, vehiclePrice, userId }: Props) {
+export default function PesanKendaraanForm({
+  vehicleId,
+  vehiclePrice,
+  userId,
+}: Props) {
   const [error, formAction] = useFormState(pesan, undefined)
 
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [price, setPrice] = useState(0);
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+  const [price, setPrice] = useState(0)
 
   const handleStartDateChange = (event: any) => {
-    setStartDate(event.target.value);
-    calculatePrice(event.target.value, endDate);
-  };
+    setStartDate(event.target.value)
+    calculatePrice(event.target.value, endDate)
+  }
 
   const handleEndDateChange = (event: any) => {
-    setEndDate(event.target.value);
-    calculatePrice(startDate, event.target.value);
-  };
+    setEndDate(event.target.value)
+    calculatePrice(startDate, event.target.value)
+  }
 
   const calculatePrice = (start: string, end: string) => {
-    const diffTime = Math.abs(new Date(end).valueOf() - new Date(start).valueOf());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    const totalPrice = vehiclePrice * (diffDays + 1);
-    setPrice(totalPrice);
-  };
+    const diffTime = Math.abs(
+      new Date(end).valueOf() - new Date(start).valueOf(),
+    )
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    const totalPrice = vehiclePrice * (diffDays + 1)
+    setPrice(totalPrice)
+  }
 
   return (
     <>
-      <form action={formAction} className='flex flex-col items-center justify-center gap-4' >
+      <form
+        action={formAction}
+        className="flex flex-col items-center justify-center gap-4"
+      >
         <fieldset>
-          <input
-            type="text"
-            id="userId"
-            name="userId"
-            value={userId}
-            hidden
-          />
+          <input type="text" id="userId" name="userId" value={userId} hidden />
         </fieldset>
         <fieldset>
           <input
@@ -65,8 +68,8 @@ export default function PesanKendaraanForm({ vehicleId, vehiclePrice, userId }: 
             hidden
           />
         </fieldset>
-        <fieldset className='flex flex-row gap-2 items-center'>
-          <label htmlFor='startDate'>Tanggal awal:</label>
+        <fieldset className="flex flex-row items-center gap-2">
+          <label htmlFor="startDate">Tanggal awal:</label>
           <input
             type="date"
             id="startDate"
@@ -77,8 +80,8 @@ export default function PesanKendaraanForm({ vehicleId, vehiclePrice, userId }: 
             onChange={handleStartDateChange}
           />
         </fieldset>
-        <fieldset className='flex flex-row gap-2 items-center'>
-          <label htmlFor='endDate'>Tanggal akhir:</label>
+        <fieldset className="flex flex-row items-center gap-2">
+          <label htmlFor="endDate">Tanggal akhir:</label>
           <input
             type="date"
             id="endDate"
@@ -92,7 +95,12 @@ export default function PesanKendaraanForm({ vehicleId, vehiclePrice, userId }: 
 
         <p>Total: Rp. {price}</p>
 
-        <button type="submit" className="w-fit rounded-full bg-blue-600 px-4 py-2 text-white" disabled={!startDate || !endDate}>Pesan
+        <button
+          type="submit"
+          className="w-fit rounded-full bg-blue-600 px-4 py-2 text-white"
+          disabled={!startDate || !endDate}
+        >
+          Pesan
         </button>
       </form>
 
