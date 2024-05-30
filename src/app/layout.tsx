@@ -1,3 +1,4 @@
+import Nav from '@/components/Nav'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 
@@ -20,7 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <header className="py-8">
+          <Nav />
+        </header>
+
+        {children}
+      </body>
     </html>
   )
 }

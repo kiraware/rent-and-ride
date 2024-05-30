@@ -11,6 +11,10 @@ export const SignupSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
 })
 
+export const CancelOrderSchema = z.object({
+  orderId: z.string().min(1, { message: 'Order Id is required' }),
+})
+
 export const PesanKendaraanSchema = z
   .object({
     userId: z.string().min(1, { message: 'userId is required' }),

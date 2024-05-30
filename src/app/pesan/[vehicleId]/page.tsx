@@ -1,9 +1,9 @@
 import CarOrderFigure2 from '@/components/CarOrderFigure2'
+import PesanKendaraanForm from '@/components/PesanKendaraanForm'
 import { getVehicleById, getVehicles } from '@/lib/vehicles'
 import * as jose from 'jose'
 import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
-import PesanKendaraanForm from '@/components/PesanKendaraanForm'
 
 type Props = {
   params: {
@@ -55,7 +55,11 @@ export default async function PesanKendaraan({ params: { vehicleId } }: Props) {
       <section className="flex flex-row gap-4">
         <CarOrderFigure2 vehicle={vehicle} />
 
-        <PesanKendaraanForm vehicleId={vehicle.id} vehiclePrice={vehicle.price} userId={userId} />
+        <PesanKendaraanForm
+          vehicleId={vehicle.id}
+          vehiclePrice={vehicle.price}
+          userId={userId}
+        />
       </section>
     </main>
   )
