@@ -4,12 +4,11 @@ import Link from 'next/link'
 
 export default async function Nav() {
   const jwt = cookies().get('Authorization')
-  let isAdmin = false
 
-  if (jwt !== undefined) {
-    const claims = jose.decodeJwt(jwt.value)
-    isAdmin = !!claims.isAdmin
-  }
+  if (!jwt) return
+
+  const claims = jose.decodeJwt(jwt.value)
+  const isAdmin = !!claims.isAdmin
 
   return (
     <nav className="px-32">
