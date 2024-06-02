@@ -10,7 +10,7 @@ export default async function CarOrderFigure({ vehicle }: Props) {
   const { id, name, image, merk, color, type, price } = vehicle
 
   return (
-    <section className="flex h-auto w-fit flex-col justify-center gap-4 rounded-2xl border">
+    <section className="flex h-auto w-fit flex-col justify-center gap-4 rounded-2xl border pb-4">
       <figure className="flex flex-col items-center">
         <Image
           src={image}
