@@ -37,6 +37,7 @@ export async function middleware(request: NextRequest) {
   if (!!!claims.isAdmin) {
     const pathname = request.nextUrl.pathname
     if (
+      pathname == '/kendaraan' ||
       pathname == '/statistik' ||
       pathname == '/pesanan' ||
       pathname == '/pengguna'
@@ -50,6 +51,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/',
+    '/kendaraan',
     '/statistik',
     '/pesanan',
     '/pengguna',
