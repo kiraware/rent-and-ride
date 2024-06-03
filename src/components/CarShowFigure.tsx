@@ -13,7 +13,7 @@ export default async function CarShowFigure({ vehicle }: Props) {
     <section className="flex h-auto w-fit flex-col justify-center gap-4 rounded-2xl border pb-4">
       <figure className="flex flex-col items-center">
         <Image
-          src={image}
+          src={image ?? undefined}
           alt={name}
           width={240}
           height={240}
