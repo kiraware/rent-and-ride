@@ -19,13 +19,13 @@ export async function POST(request: Request) {
   }
 
   // Read data off validated fields
-  const { name, merk, color, type, price } = validatedFields.data
+  const { name, image, merk, color, type, price } = validatedFields.data
 
   // Create the vehicle
   const vehicle = await prisma.vehicle.create({
     data: {
       name,
-      // image,
+      image,
       merk: merk as MerkEnum,
       color: color as ColorEnum,
       type: type as VehicleTypeEnum,

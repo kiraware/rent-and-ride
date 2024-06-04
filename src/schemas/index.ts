@@ -47,6 +47,7 @@ export const CreateVehicleSchema = z.object({
   // type: z.enum(Object.keys(VehicleTypeEnum), {
   //   message: 'Vehicle type must be VehicleTypeEnum items',
   // }),
+  image: z.string().min(1, { message: 'image is required' }),
   merk: z.string().min(1, { message: 'merk is required' }),
   color: z.string().min(1, { message: 'color is required' }),
   type: z.string().min(1, { message: 'type is required' }),

@@ -7,11 +7,11 @@ import { useFormState } from 'react-dom'
 
 export default function CreateVehicleForm() {
   const [error, formAction] = useFormState(createVehicleAction, undefined)
-  // const [image, setImage] = useState(null)
+  const [image, setImage] = useState(null)
 
-  // const handleImageChange = (e: any) => {
-  //   setImage(e.target.files[0])
-  // }
+  const handleImageChange = (e: any) => {
+    setImage(e.target.files[0])
+  }
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function CreateVehicleForm() {
             />
           </fieldset>
 
-          {/* <fieldset className="flex flex-row gap-2">
+          <fieldset className="flex flex-row gap-2">
             <label className="flex items-center text-xl" htmlFor="image">
               Image
             </label>
@@ -44,7 +44,7 @@ export default function CreateVehicleForm() {
               className="border-b-2 focus:border-b-blue-600 focus:outline-none"
               required
             />
-          </fieldset> */}
+          </fieldset>
 
           <fieldset className="flex flex-row gap-2">
             <label className="flex items-center text-xl" htmlFor="merk">
