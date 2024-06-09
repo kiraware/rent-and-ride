@@ -37,16 +37,16 @@ export const PesanKendaraanSchema = z
 
 export const CreateVehicleSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
-  // image: z.string().min(1, { message: 'Image is required' }),
-  // merk: z.enum(Object.keys(MerkEnum), {
-  //   message: 'Merk must be MerkEnum items',
-  // }),
-  // color: z.enum(Object.keys(ColorEnum), {
-  //   message: 'Color must be ColorEnum items',
-  // }),
-  // type: z.enum(Object.keys(VehicleTypeEnum), {
-  //   message: 'Vehicle type must be VehicleTypeEnum items',
-  // }),
+  image: z.string().min(1, { message: 'image is required' }),
+  merk: z.string().min(1, { message: 'merk is required' }),
+  color: z.string().min(1, { message: 'color is required' }),
+  type: z.string().min(1, { message: 'type is required' }),
+  price: z.string().min(1, { message: 'price is required' }),
+})
+
+export const EditVehicleSchema = z.object({
+  id: z.string().min(1, { message: 'Id is required' }),
+  name: z.string().min(1, { message: 'Name is required' }),
   image: z.string().min(1, { message: 'image is required' }),
   merk: z.string().min(1, { message: 'merk is required' }),
   color: z.string().min(1, { message: 'color is required' }),
