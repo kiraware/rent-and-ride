@@ -31,8 +31,7 @@ export async function createVehicleAction(
     cloudinary.uploader
       .upload_stream(
         {
-          tags: ['nextjs-server-actions-upload-vehicles'],
-          upload_preset: 'nextjs-server-actions-upload',
+          upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
           public_id: tempFileName,
         },
         function (error, result) {
@@ -55,7 +54,9 @@ export async function createVehicleAction(
     },
     body: JSON.stringify({
       name,
-      image: tempFileName,
+      image: cloudinary.url(
+        `${process.env.CLOUDINARY_FOLDER_NAME}/${tempFileName}`,
+      ),
       merk,
       color,
       type,
