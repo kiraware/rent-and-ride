@@ -22,7 +22,14 @@ export async function POST(request: Request) {
   const { orderId, action } = validatedFields.data
 
   let order
-  if (action === 'ambil') {
+  if (action === 'bayar') {
+    order = await prisma.order.update({
+      where: {
+        id: orderId,
+      },
+      data: { status: OrderStatus.PAID },
+    })
+  } else if (action === 'ambil') {
     order = await prisma.order.update({
       where: {
         id: orderId,

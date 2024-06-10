@@ -18,7 +18,7 @@ export const CancelOrderSchema = z.object({
 
 export const ProcessOrderSchema = z.object({
   orderId: z.string().min(1, { message: 'Order Id is required' }),
-  action: z.enum(['ambil', 'kembalikan'], {
+  action: z.enum(['bayar', 'ambil', 'kembalikan'], {
     message: 'Action must be either "ambil" or "kembalikan"',
   }),
 })
