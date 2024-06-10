@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export default async function cancelOrderAction(
@@ -23,6 +24,8 @@ export default async function cancelOrderAction(
 
   // Redirect to home if success
   if (res.ok) {
+    revalidatePath('/pesan')
+    revalidatePath('/pesanan')
     redirect('/pesan')
   } else {
     return data.error

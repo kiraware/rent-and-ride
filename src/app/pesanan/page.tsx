@@ -1,41 +1,20 @@
-export default function Pesanan() {
+import CarOrderedFigure2 from '@/components/CarOrderedFigure2'
+import { getOrders } from '@/lib/orders'
+
+export default async function Pesanan() {
+  const orders = await getOrders()
+
   return (
-    <main>
-    {/* <h1>Pesanan Kendaraan</h1><br><br><br>
+    <main className="flex min-h-screen flex-col items-center justify-center gap-4">
+      <h1 className="w-fit pb-16 text-4xl font-bold after:mx-auto after:flex after:h-1 after:w-4/6 after:rounded-full after:bg-blue-600">
+        Pesanan Kendaraan
+      </h1>
 
-<div class="container">
-    <div class="shape1">
-        <img src="https://placehold.co/150x100" alt=""><br>
-        <h4>INNOVA REBORN</h4><br>
-        <h5>Toyota Silver MPV</h5><br><br>
-        <h4>Belum Bayar</h4>
-        <h4>20 Januari 2024 - 23 Januari 2024</h4>
-        <h4>Rp. 2.200.000</h4>
-        <h4>Joe Febrian Sinuraya</h4><br><br>
-        <button class="button1">
-            Batalkan Pesanan
-        </button><br>
-        <button class="button2">
-            Ubah Status
-        </button>
-    </div>
-
-    <div class="shape2">
-        <img src="https://placehold.co/150x100" alt=""><br>
-        <h4>HIACE COMMUTER</h4><br>
-        <h5>Toyota Silver Minivans</h5><br><br>
-        <h4>Sudah Bayar</h4>
-        <h4>02 Januari 2024</h4>
-        <h4>Rp. 550.000</h4>
-        <h4>Muhammad Fajar Alfad</h4><br><br><br>
-        <button class="button3">
-            Batalkan
-        </button>
-        <button class="button4">
-            Ubah Status
-        </button>
-    </div>
-</div><br><br><br> */}
+      <section className="flex flex-row flex-wrap justify-evenly gap-4">
+        {orders.map((order) => (
+          <CarOrderedFigure2 key={order.id} order={order} />
+        ))}
+      </section>
     </main>
   )
 }

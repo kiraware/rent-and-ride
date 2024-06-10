@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export default async function processOrderAction(
@@ -24,6 +25,8 @@ export default async function processOrderAction(
 
   // Redirect to home if success
   if (res.ok) {
+    revalidatePath('/pesan')
+    revalidatePath('/pesanan')
     redirect('/status')
   } else {
     return data.error

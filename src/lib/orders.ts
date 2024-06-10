@@ -2,6 +2,10 @@ import prisma from '@/lib/prisma'
 import type { Order } from '@prisma/client'
 import { OrderStatus } from '@prisma/client'
 
+export async function getOrders(): Promise<Order[]> {
+  return await prisma.order.findMany()
+}
+
 export async function getOrdersByUserId(userId: string): Promise<Order[]> {
   return await prisma.order.findMany({
     where: {
