@@ -38,7 +38,7 @@ model Order {
   endDate         DateTime
   totalRentPrice  Float
   paymentProof    String?
-  status          OrderStatus
+  status          OrderStatus @default(PENDING_PAYMENT)
 }
 
 enum OrderStatus {

@@ -20,12 +20,38 @@ export async function middleware(request: NextRequest) {
   } catch (JWSSignatureVerificationFailed) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
+
+  const claims = jose.decodeJwt(jwt)
+  if (!!claims.isAdmin) {
+    const pathname = request.nextUrl.pathname
+
+    if (
+      pathname == '/pesan' ||
+      pathname == '/status' ||
+      pathname == '/riwayat'
+    ) {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+  }
+
+  if (!!!claims.isAdmin) {
+    const pathname = request.nextUrl.pathname
+    if (
+      pathname == '/kendaraan' ||
+      pathname == '/statistik' ||
+      pathname == '/pesanan' ||
+      pathname == '/pengguna'
+    ) {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+  }
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
   matcher: [
     '/',
+    '/kendaraan',
     '/statistik',
     '/pesanan',
     '/pengguna',
