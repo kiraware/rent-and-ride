@@ -1,5 +1,3 @@
-'use client'
-
 import { createVehicleAction } from '@/actions/vehicle'
 import { ColorEnum, MerkEnum, VehicleTypeEnum } from '@prisma/client'
 import { useState } from 'react'
@@ -130,6 +128,17 @@ export default function CreateVehicleForm() {
       </form>
 
       {error && <p className="text-red-600">{error}</p>}
+
+      {image && (
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-2">Preview Gambar</h2>
+          <img
+            src={URL.createObjectURL(image)}
+            alt="Preview Gambar"
+            className="max-w-full h-auto"
+          />
+        </div>
+      )}
     </>
   )
 }
