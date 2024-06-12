@@ -6,7 +6,7 @@ export default async function Statistik() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start gap-2">
-      <h1 className="mt-16 w-fit text-4xl font-bold after:mx-auto after:flex after:h-1 after:w-4/6 after:rounded-full after:bg-blue-600">
+      <h1 className="mt-5 w-fit text-4xl font-bold after:mx-auto after:flex after:h-1 after:w-4/6 after:rounded-full after:bg-blue-600">
         Statistik Sewa Kendaraan
       </h1>
 
