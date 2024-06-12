@@ -5,12 +5,12 @@ export default async function Pengguna() {
   const users = await getUsers()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4">
-      <h1 className="w-fit pb-16 text-4xl font-bold after:mx-auto after:flex after:h-1 after:w-4/6 after:rounded-full after:bg-blue-600">
+    <main className="min-h-screen flex flex-col items-center justify-center gap-4 p-4">
+      <h1 className="pb-16 text-4xl font-bold text-center bg-blue-600 text-white rounded-full w-4/6">
         Pengguna Sewa Kendaraan
       </h1>
 
-      <section className="flex flex-row flex-wrap justify-evenly">
+      <section className="flex flex-wrap justify-center gap-4">
         {users.map((user) => (
           <UserFigure key={user.id} user={user} />
         ))}
