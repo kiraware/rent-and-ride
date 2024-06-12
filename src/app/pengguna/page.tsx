@@ -6,8 +6,8 @@ export default async function Pengguna() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start gap-4">
-      <h1 className="mt-16 w-fit text-4xl font-bold after:mx-auto after:flex after:h-1 after:w-4/6 after:rounded-full after:bg-blue-600">
-        Pengguna Sewa Kendaraan
+      <h1 className="w-fit pb-16 text-4xl font-bold after:mx-auto after:flex after:h-1 after:w-4/6 after:rounded-full after:bg-blue-600">
+        Pengguna sewa kendaraan
       </h1>
 
       <section className="w-full px-4 mt-8">
