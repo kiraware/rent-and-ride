@@ -1,42 +1,20 @@
-export default function Pesanan() {
-    return (
-      <main>
-      {/* <h1>Statistik Penyewaan Kendaraan</h1>
+import CarStatFigure from '@/components/CarStatFigure'
+import { getVehicleStatsThisMonth } from '@/lib/stats'
 
+export default async function Statistik() {
+  const stats = await getVehicleStatsThisMonth()
 
-    
-<div class="container"> 
-    <div class="shape1">
-        <div class="shape4">
-            <h6>1</h6>
-        </div>
-        <img src="https://placehold.co/150x100" alt="">
-        <h5>INNOVA REBORN<br><br>
-        Disewakan 10 kali / bln<br><br>
-        Toyota Silver MPV</h5>
-    </div>
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center gap-4">
+      <h1 className="w-fit pb-16 text-4xl font-bold after:mx-auto after:flex after:h-1 after:w-4/6 after:rounded-full after:bg-blue-600">
+        Statistik Penyewaan Kendaraan
+      </h1>
 
-    <div class="shape2">
-        <div class="shape5">
-            <h6>2</h6>
-        </div>
-        <img src="https://placehold.co/150x100" alt="">
-        <h5>CALYA <br><br>
-        Disewakan 7 kali / bln <br><br>
-        Toyota Silver SUV</h5>
-    </div>
-
-    <div class="shape3">
-        <div class="shape6">
-            <h6>3</h6>
-        </div>
-        <img src="https://placehold.co/150x100" alt="">
-        <h5>HIACE COMMUTER <br><br>
-        Disewakan 5 kali / bln <br><br>
-        Toyota Silver MINIVANS</h5>
-    </div>
-</div> */}
-      </main>
-    )
-  }
-  
+      <section className="flex flex-row flex-wrap justify-evenly">
+        {stats.map((stat) => (
+          <CarStatFigure key={stat.id} vehicleStat={stat} />
+        ))}
+      </section>
+    </main>
+  )
+}
